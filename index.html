@@ -9,14 +9,24 @@
 
     <script>
         function geoSuccess(position) {
-            var lat = position.coords.latitude;
-            var lng = position.coords.longitude;
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            var myLatLng = {
+                lat: latitude,
+                lng: longitude
+            };
+            console.log(latitude, longitude);
             // alert("lat:" + lat + " lng:" + lng);
             var mapProp = {
-                center: new google.maps.LatLng(lat, lng), // puts your current location at the centre of the map,
+                center: new google.maps.LatLng(latitude, longitude), // puts your current location at the centre of the map,
                 zoom: 16,
             };
             var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: 'Centre of my World!'
+            });
         }
 
         function geoError() {
@@ -31,11 +41,15 @@
                 alert("Geolocation is not supported by this browser.");
             }
         }
-
         getLocation();
     </script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCc7FZQ6jG2VcxnxbMNdkPFFzrUsJxq-ys&callback=myMap"></script>
+
+</body>
+
+</html>
+NdkPFFzrUsJxq-ys&callback=myMap"></script>
 
 </body>
 
