@@ -11,8 +11,7 @@
     function geoSuccess(position) {
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
-        var directionsService = new google.maps.DirectionsService;
-        var directionsDisplay = new google.maps.DirectionsRenderer;
+
         var myLatLng = {
             lat: latitude,
             lng: longitude
@@ -33,7 +32,7 @@
 //        };
 
         //call renderer to display directions
-        directionsDisplay.setMap(map);
+//        directionsDisplay.setMap(map);
 
         // Multiple Markers
         var marker = new google.maps.Marker({
@@ -51,10 +50,10 @@
         var infoWindowContent = [
             ['<div>' +
             '<h3>Ragazzi</h3>' +
-            '<p>Cafe eatin place.</p>' + ' <button onclick="calculateAndDisplayRoute(marker, i)"> Get Directions</button>' +'</div>'],
+            '<p>Cafe eatin place.</p>' + '<button id="getDirections"> Get Directions</button>' + '</div>'],
             ['<div class="info_content">' +
             '<h3>McDonalds</h3>' +
-            '<p>Excellent food establishment, NOT!.</p>' + '<button onclick="calculateAndDisplayRoute(marker, i)"> Get Directions</button>' +
+            '<p>Excellent food establishment, NOT!.</p>' + '<button id="getDirections"> Get Directions</button>' +
                 '</div>']
         ];
 
@@ -80,14 +79,40 @@
                 }
             })(marker, i));
 
-            //allow each marker call our function to get directions
-//            google.maps.event.addListener(marker, click, )
+            // Allow each button in the info window call for directions
+            google.maps.event.addListener(infoWindow, 'domready', function(){
+                document.id("getDirections").addEvent("click", function(e){
+                    e.stop;
+                    console.log("Whey hey hey!");
+//                    calculateAndDisplayRoute();
+                })
+            });
 
             // Automatically center the map fitting all markers on the screen
             map.fitBounds(bounds);
         }
     }
 
+    //create instances of Google direction service and renderer
+    var directionsService = new google.maps.DirectionsService;
+    var directionsDisplay = new google.maps.DirectionsRenderer;
+
+    //call Google's directions service
+    function calculateAndDisplayRoute(directionsService , directionsDisplay) {
+        directionsService.route({
+            origin: document.getElementById('start').value,
+            destination: document.getElementById('end').value,
+            travelMode: 'WALKING    '
+        }, function(response, status) {
+            if (status === 'OK') {
+                directionsDisplay.setDirections(response);
+            } else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        });
+    }
+
+    //deal with  getLocation() returning an error.
     function geoError() {
         alert("Geocoder failed.");
     }
