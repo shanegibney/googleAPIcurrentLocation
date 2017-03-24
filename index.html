@@ -48,22 +48,22 @@
                 title: 'My location'
             });
             var markers = [
-                ['Ragazzi', 53.201472, -6.111626],
-                ['McDonalds', 53.200482, -6.119337],
-                // ['McDonalds', 53.200482, -6.111337],
+                ['Galway', 53.2707, -9.0568],
+                ['Cork', 51.9942, -8.7285],
+                // ['McDonalds', 53.200482, -6.111337],//for viewing wanted greater diiference in longitude
                 ['my location', latitude, longitude]
             ];
 
             // Info Window Content
             var infoWindowContent = [
-                ['<div>' +
-                    '<h3>Ragazzi</h3>' +
-                    '<p>Cafe eatin place.</p>' + ' <button onclick="calculateAndDisplayRoute(marker, i)"> Get Directions</button>' + '</div>'
-                ],
                 ['<div class="info_content">' +
-                    '<h3>McDonalds</h3>' +
-                    '<p>Excellent food establishment, NOT!.</p>' + '<button onclick="calculateAndDisplayRoute(marker, i)"> Get Directions</button>' +
+                    '<h3>Galway</h3>' +
+                    '<p>Galway Girl from here!</p>' + '<button onclick="calculateAndDisplayRoute(marker, i)"> Get Directions</button>' +
                     '</div>'
+                ],
+                ['<div>' +
+                    '<h3>Cork</h3>' +
+                    '<p>This is Cork Boeee!</p>' + ' <button onclick="calculateAndDisplayRoute(marker, i)"> Get Directions</button>' + '</div>'
                 ]
             ];
 
@@ -86,6 +86,7 @@
                     return function() {
                         infoWindow.setContent(infoWindowContent[i][0]);
                         infoWindow.open(map, marker);
+
                         latit = marker.getPosition().lat();
                         longit = marker.getPosition().lng();
                         // console.log("lat: " + latit);
@@ -97,6 +98,7 @@
                     directionsService.route({
                         // origin: document.getElementById('start').value,
                         origin: myLatLng,
+
                         // destination: marker.getPosition(),
                         destination: {
                             lat: latit,
