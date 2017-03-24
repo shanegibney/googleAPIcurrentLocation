@@ -9,6 +9,8 @@
 
     <script>
         var myLatLng;
+        var latit;
+        var longit;
 
         function geoSuccess(position) {
             var latitude = position.coords.latitude;
@@ -19,13 +21,10 @@
                 lat: latitude,
                 lng: longitude
             };
-            // console.log(latitude, longitude);
-            // alert("lat:" + lat + " lng:" + lng);
             var mapProp = {
                 //            center: new google.maps.LatLng(latitude, longitude), // puts your current location at the centre of the map,
                 zoom: 15,
                 mapTypeId: 'roadmap',
-                //            mapTypeId: 'hybrid',
 
             };
             var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
@@ -50,7 +49,8 @@
             });
             var markers = [
                 ['Ragazzi', 53.201472, -6.111626],
-                ['McDonalds', 53.200482, -6.111337],
+                ['McDonalds', 53.200482, -6.119337],
+                // ['McDonalds', 53.200482, -6.111337],
                 ['my location', latitude, longitude]
             ];
 
@@ -70,7 +70,6 @@
             // Display multiple markers on a map
             var infoWindow = new google.maps.InfoWindow(),
                 marker, i;
-            //        console.log(infoWindow);
 
             // Loop through our array of markers & place each one on the map
             for (i = 0; i < markers.length; i++) {
@@ -87,17 +86,22 @@
                     return function() {
                         infoWindow.setContent(infoWindowContent[i][0]);
                         infoWindow.open(map, marker);
+                        latit = marker.getPosition().lat();
+                        longit = marker.getPosition().lng();
+                        // console.log("lat: " + latit);
+                        // console.log("lng: " + longit);
                     }
                 })(marker, i));
 
-                //allow each marker call our function to get directions
-                //            google.maps.event.addListener(marker, click, )
                 marker.addListener('click', function() {
-
                     directionsService.route({
                         // origin: document.getElementById('start').value,
                         origin: myLatLng,
-                        destination: marker.getPosition(),
+                        // destination: marker.getPosition(),
+                        destination: {
+                            lat: latit,
+                            lng: longit
+                        },
                         travelMode: 'DRIVING'
                     }, function(response, status) {
                         if (status === 'OK') {
