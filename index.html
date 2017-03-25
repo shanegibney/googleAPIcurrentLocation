@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
 
+<head>
+    <link rel="stylesheet" href="master.css">
+</head>
+
 <body>
 
-    <h1>My First Google Map</h1>
-
-    <div id="googleMap" style="width:60%;height:800px;"></div>
+    <div id="googleMap"></div>
+    <!-- <div id="googleMap" style="width:60%;height:800px;"></div> -->
 
     <script>
         var myLatLng;
@@ -48,8 +51,9 @@
                 title: 'My location'
             });
             var markers = [
-                ['Galway', 53.2707, -9.0568],
-                ['Cork', 51.9942, -8.7285],
+                // ['Galway', 53.2707, -9.0568],
+                // ['Cork', 51.9942, -8.7285],
+                ['Clement & Pekoe', 53.3415, -6.2628],
                 // ['McDonalds', 53.200482, -6.111337],//for viewing wanted greater diiference in longitude
                 ['my location', latitude, longitude]
             ];
@@ -57,13 +61,9 @@
             // Info Window Content
             var infoWindowContent = [
                 ['<div class="info_content">' +
-                    '<h3>Galway</h3>' +
-                    '<p>Galway Girl from here!</p>' + '<button onclick="calculateAndDisplayRoute(marker, i)"> Get Directions</button>' +
+                    '<h3>Clement & Pekoe</h3>' +
+                    '<p>Nice coffee</p>' +
                     '</div>'
-                ],
-                ['<div>' +
-                    '<h3>Cork</h3>' +
-                    '<p>This is Cork Boeee!</p>' + ' <button onclick="calculateAndDisplayRoute(marker, i)"> Get Directions</button>' + '</div>'
                 ]
             ];
 
