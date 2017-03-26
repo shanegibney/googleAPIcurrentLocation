@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+</head>
+
 <body>
 
     <h1>My First Google Map</h1>
@@ -8,6 +12,19 @@
     <div id="googleMap" style="width:60%;height:800px;"></div>
 
     <script>
+        function detectBrowser() {
+            var useragent = navigator.userAgent;
+            var mapdiv = document.getElementById("map");
+
+            if (useragent.indexOf('iPhone') != -1 || useragent.indexOf('Android') != -1) {
+                mapdiv.style.width = '100%';
+                mapdiv.style.height = '100%';
+            } else {
+                mapdiv.style.width = '600px';
+                mapdiv.style.height = '800px';
+            }
+        }
+
         var myLatLng;
         var latit;
         var longit;
@@ -39,7 +56,6 @@
             //        var mapOptions = {
             //            mapTypeId: 'roadmap'
             //        };
-
 
             // Multiple Markers
             var marker = new google.maps.Marker({
