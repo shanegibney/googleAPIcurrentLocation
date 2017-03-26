@@ -2,15 +2,29 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="master.css">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 </head>
 
 <body>
 
-    <div id="googleMap"></div>
-    <!-- <div id="googleMap" style="width:60%;height:800px;"></div> -->
+    <h1>My First Google Map</h1>
+
+    <div id="googleMap" style="width:60%;height:800px;"></div>
 
     <script>
+        function detectBrowser() {
+            var useragent = navigator.userAgent;
+            var mapdiv = document.getElementById("map");
+
+            if (useragent.indexOf('iPhone') != -1 || useragent.indexOf('Android') != -1) {
+                mapdiv.style.width = '100%';
+                mapdiv.style.height = '100%';
+            } else {
+                mapdiv.style.width = '600px';
+                mapdiv.style.height = '800px';
+            }
+        }
+
         var myLatLng;
         var latit;
         var longit;
@@ -43,7 +57,6 @@
             //            mapTypeId: 'roadmap'
             //        };
 
-
             // Multiple Markers
             var marker = new google.maps.Marker({
                 position: myLatLng,
@@ -51,9 +64,8 @@
                 title: 'My location'
             });
             var markers = [
-                // ['Galway', 53.2707, -9.0568],
-                // ['Cork', 51.9942, -8.7285],
-                ['Clement & Pekoe', 53.3415, -6.2628],
+                ['Galway', 53.2707, -9.0568],
+                ['Cork', 51.9942, -8.7285],
                 // ['McDonalds', 53.200482, -6.111337],//for viewing wanted greater diiference in longitude
                 ['my location', latitude, longitude]
             ];
@@ -61,9 +73,13 @@
             // Info Window Content
             var infoWindowContent = [
                 ['<div class="info_content">' +
-                    '<h3>Clement & Pekoe</h3>' +
-                    '<p>Nice coffee</p>' +
+                    '<h3>Galway</h3>' +
+                    '<p>Galway Girl from here!</p>' + '<button onclick="calculateAndDisplayRoute(marker, i)"> Get Directions</button>' +
                     '</div>'
+                ],
+                ['<div>' +
+                    '<h3>Cork</h3>' +
+                    '<p>This is Cork Boeee!</p>' + ' <button onclick="calculateAndDisplayRoute(marker, i)"> Get Directions</button>' + '</div>'
                 ]
             ];
 
