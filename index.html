@@ -3,6 +3,7 @@
 
 <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <!-- <link rel="stylesheet" type="text/css" href="master.css"> -->
 </head>
 
 <body>
@@ -64,22 +65,67 @@
                 title: 'My location'
             });
             var markers = [
-                ['Galway', 53.2707, -9.0568],
-                ['Cork', 51.9942, -8.7285],
-                // ['McDonalds', 53.200482, -6.111337],//for viewing wanted greater diiference in longitude
-                ['my location', latitude, longitude]
+                ['3fe', 53.339964, -6.241972],
+                ['The Fumbally', 53.337031, -6.272995],
+                ['Coffeeangel', 53.343963, -6.262116],
+                ['Brother Hubbard', 53.332744, -6.265639],
+                ['Vice Coffee Inc.', 53.347829, -6.262295],
+                ['Roasted Brown', 53.344813, -6.264707],
+                ['Kaph', 53.342599, -6.263272],
+                ['Fallon & Byrne', 53.343151, -6.263287],
+                ['Clement & Pekoe', 53.341534, -6.26276],
+                ['my current location', latitude, longitude]
             ];
 
             // Info Window Content
             var infoWindowContent = [
                 ['<div class="info_content">' +
-                    '<h3>Galway</h3>' +
-                    '<p>Galway Girl from here!</p>' + '<button onclick="calculateAndDisplayRoute(marker, i)"> Get Directions</button>' +
+                    '<h3>3fe</h3>' +
+                    '<p>32 Grand Canal Street Lower, Grand Canal Dock, Dublin 2</p>' +
+                    '<img src="images/3fe.jpg" width="200" height="200">' +
                     '</div>'
                 ],
-                ['<div>' +
-                    '<h3>Cork</h3>' +
-                    '<p>This is Cork Boeee!</p>' + ' <button onclick="calculateAndDisplayRoute(marker, i)"> Get Directions</button>' + '</div>'
+                ['<div class="info_content">' +
+                    '<h3>The Fumbally</h3>' +
+                    '<p>Fumbally Lane, Dublin 8</p>' +
+                    '<img src="images/thefumbally.jpg" width="200" height="200">' +
+                    '</div>'
+                ],
+                ['<div class="info_content">' +
+                    '<h3>' + markers[3][0] + '</h3>' +
+                    '<p>46 Harrington Street Dublin 8</p>' +
+                    '<img src="images/brotherhubbard.jpg" width="200" height="200">' +
+                    '</div>'
+                ],
+                ['<div class="info_content">' +
+                    '<h3>Vice Coffee inc</h3>' +
+                    '<p>54 Middle Abbey St, Dublin 1</p>' +
+                    '<img src="images/vicecoffeeinc.jpg" width="200" height="200">' +
+                    '</div>'
+                ],
+                ['<div class="info_content">' +
+                    '<h3>Roasted Brown</h3>' +
+                    '<p>1st Floor, Filmbase, Curved Street, Temple Bar, Dublin 2</p>' +
+                    '<img src="images/roastedbrown.jpg" width="200" height="200">' +
+                    '</div>'
+                ],
+                ['<div class="info_content">' +
+                    '<h3>Kaph</h3>' +
+                    '<p>31 Drury St, Dublin 2</p>' +
+                    '<img src="images/kaph-6.jpg" width="200" height="200">' +
+                    '</div>'
+                ],
+                ['<div class="info_content">' +
+                    '<h3>Fallon & Byrne</h3>' +
+                    '<p>17 Exchequer St, Dublin 2</p>' +
+                    '<img src="images/fallonandbyrne.jpg" width="200" height="200">' +
+                    '</div>'
+                ],
+                ['<div class="info_content">' +
+                    '<h3>Clement & Pekoe</h3>' +
+                    '<p>50 South William St, Dublin 2</p>' +
+                    '<img src="images/ClementPekoe.jpg" width="200" height="200">' +
+                    '</div>'
                 ]
             ];
 
